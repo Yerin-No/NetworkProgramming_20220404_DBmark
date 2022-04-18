@@ -17,10 +17,13 @@
       1. DB 테이블 만들기
    3. bookmark/admin Bookmark
       1. python manage.py createsuperuser
-      2. bookmark/models Booknarj \_\_str\_\_()
+      2. bookmark/models Bookmark \_\_str\_\_()
    4. bookmark/views BookmarkListView
    5. urls, bookmark/urls bookmark:list
    6. templates bookmark_list.html
    7. bookmark/views BookmarkCreateView
    8. urls, bookmark/urls bookmark:add
-   9. templates bookmark_create
+   9. templates bookmark_create.html
+   10. bookmark/views BookmarkDetailView
+   11. bookmark.urls bookmark:detail
+   12. templates bookmark_detail.html
