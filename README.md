@@ -39,5 +39,8 @@
 ---
 - accounts Profile 
   - startapp accounts
-  - python manage.py startapp accounts
-  - 'accounts', in INSTALLED_APPS settings
+    - python manage.py startapp accounts
+    - 'accounts', in INSTALLED_APPS settings
+  - accounts/models Profile
+    - python manage.py makemigrations accounts
+    - python manage.py migrate accounts
