@@ -1,8 +1,8 @@
-#DBookmark
+# DBookmark
 - project/urls.py -> app/urls.py -> views.py -> models.py -> templates/app/index.html
 - admin.py : 관리자 사이트
 - form.py : 입력 사이트
-- 개발 순서 : model.py, views,py urls.py, templates
+- 개발 순서: models.py, views.py, urls.py, templates
 1. startproject DBookmark
    1. python -m pip install django~=3.2
    2. django-admin startproject DBookmark .
@@ -22,10 +22,10 @@
    5. urls, bookmark/urls bookmark:list
    6. templates bookmark_list.html
    7. bookmark/views BookmarkCreateView
-   8. urls, bookmark/urls bookmark:add
+   8. bookmark/urls bookmark:add
    9. templates bookmark_create.html
    10. bookmark/views BookmarkDetailView
-   11. bookmark.urls bookmark:detail
+   11. bookmark/urls bookmark:detail
    12. templates bookmark_detail.html
    13. bookmark/views BookmarkUpdateView
    14. bookmark/urls bookmark:edit
@@ -34,10 +34,10 @@
    17. bookmark/views BookmarkDeleteView
    18. bookmark/urls bookmark:delete
    19. templates bookmark_confirm_delete.html
-4. 기능완성
+4. 🧨🎉✨ 기능완성
    1. templates/base.html, extends 'base.html', block title, content
 ---
-- accounts Profile 
+- accounts Profile
   - startapp accounts
     - python manage.py startapp accounts
     - 'accounts', in INSTALLED_APPS settings
@@ -46,10 +46,18 @@
     - python manage.py migrate accounts
   - bookmark/models add profile in Bookmark
     - python manage.py makemigrations bookmark
-      1. 기존에 자료가 있으면, 에러남(다 지우고 다시 하거나)
+      1. 기존에 자료가 있으면, 에러남.(다 지우고 다시 하거나)
       2. Bookmark의 profile에 null=True
-      3. python manage.py make3migrations bookmark
+      3. python manage.py makemigrations bookmark
     - python manage.py migrate bookmark
       - admin 사이트에서 로그인 후, Profile 하나 추가하고,
       - 기존 북마크에 profile 지정하자
-    - accounts/admin ProfileAdmin
+  - accounts/admin ProfileAdmin
+  - register
+    - accounts/forms RegisterForm(UserCreationForm)
+    - accounts/views register
+    - DBookmark/urls, accounts/urls accounts:register
+    - accounts/templates/accounts register, register_done
+      - bookmark/templates/bookmark bookmark_list
+  - login, logout
+    - accounts/forms LoginForm 
