@@ -22,12 +22,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-
+# SECRET_KEY = 'django-insecure-29qse5=4sgf91if6ppe48+djd&vlp%_b$s(^6yh+5jejz+@f(!'
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
-SECRET_KEY = 'django-insecure-1=4*q%^gs5%_1xl8733@+bxiw(1q)h9j@2x)ovh8-(j-+o%6h-'
+SECRET_KEY = 'django-insecure-29qse5=4sgf91if6ppe48+djd&vlp%_b$s(^6yh+5jejz+@f(!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DJANGO_DEBUG') == 'True'
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
@@ -127,11 +128,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')     # static 파일 모을 폴더
-STATICFILES_DIRS = [        # 프로젝트 전체에 사용할 static 파일 폴더
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') #static 파일 모을 폴더
+STATICFILES_DIRS = [    #프로젝트 전체에 사용할 static 파일 폴더
     os.path.join(BASE_DIR, 'static')
 ]
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -140,4 +141,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # MEDIA(사용자가 업로드한 파일)
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')  # 업로드한 파일 위치
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')  #업로드한 파일 위치

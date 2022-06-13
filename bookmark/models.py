@@ -10,8 +10,7 @@ class Bookmark(models.Model):
     url = models.URLField()
 
     def __str__(self):
-        return f'{self.name}: {self.url}'    #어무해 : http://bit.ly/2022NP
+        return f'{self.name} : {self.url}'    #어무해 : http://bit.ly/2022NP
 
     def get_absolute_url(self):
         return resolve_url('bookmark:detail', pk=self.pk)
-
