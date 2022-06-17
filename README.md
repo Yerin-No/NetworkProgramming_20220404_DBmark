@@ -62,7 +62,7 @@
   - login, logout
     - accounts/forms LoginForm
     - accounts/views my_login, my_logout
-    - accounts.urls accounts:login, logout
+    - accounts/urls accounts:login, logout
     - accounts/templates/accounts login, login_fail
       - bookmark/templates/bookmark login, logout
     - bookmark/views BookmarkListView get_queryset(), BookmarkCreateView get_initial()

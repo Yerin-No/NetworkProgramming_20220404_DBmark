@@ -31,6 +31,7 @@ def my_login(request):
         return render(request, 'accounts/login.html', {'form': form})
 
 
+
 def my_logout(request):
     logout(request)
     return redirect('bookmark:list')

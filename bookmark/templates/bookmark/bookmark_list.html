@@ -1,4 +1,3 @@
-
 {% extends 'base.html' %}
 
 {% block title %}Bookmark List{% endblock %}
@@ -9,12 +8,15 @@
         <a href="{% url 'bookmark:add' %}" class="btn btn-success">Add Bookmark</a>
         <a href="{% url 'accounts:logout' %}" class="btn btn-light">logout</a>
     {% else %}
-        <a href="{% url 'accounts:logout' %}" class="btn btn-warning">register</a>
-<a href="{% url 'accounts:logout' %}" class="btn btn-light">login</a>
+        <a href="{% url 'accounts:register' %}" class="btn btn-warning">register</a>
+        <a href="{% url 'accounts:login' %}" class="btn btn-info">login</a>
+    {% endif %}
 </div>
 <table class="table">
     <thead>
     <tr>
+        <th>#</th>
+        <th>Name</th>
         <th>URL</th>
         <th>Edit</th>
         <th>Delete</th>
@@ -22,13 +24,13 @@
     </thead>
     <tbody>
     {% for bookmark in bookmark_list %}
-    <tr>
-        <td>{{ forloop.counter }}</td>
-        <td><a href="{% url 'bookmark:detail' pk=bookmark.id %}">{{ bookmark.name }}</a></td>
-        <td><a href="{{ bookmark.url }}" >{{ bookmark.url }}</a></td>
-        <td><a href="{% url 'bookmark:edit' pk=bookmark.pk %}" class="btn btn-primary btn-sm">Edit</a></td>
-        <td><a href="{% url 'bookmark:delete' pk=bookmark.pk %}" class="btn btn-danger btn-sm">Delete</a></td>
-    </tr>
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td><a href="{% url 'bookmark:detail' pk=bookmark.pk %}">{{ bookmark.name }}</a></td>
+            <td><a href="{{ bookmark.url }}">{{ bookmark.url }}</a></td>
+            <td><a href="{% url 'bookmark:edit' pk=bookmark.pk %}" class="btn btn-primary btn-sm">Edit</a></td>
+            <td><a href="{% url 'bookmark:delete' pk=bookmark.pk %}" class="btn btn-danger btn-sm">Delete</a></td>
+        </tr>
     {% endfor %}
     </tbody>
 </table>
