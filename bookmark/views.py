@@ -52,16 +52,18 @@ class BookmarkDeleteView(LoginRequiredMixin, DeleteView):
     model = Bookmark
     success_url = reverse_lazy('bookmark:list')
 
+
 def list_bookmark(request):
     # 로그인 사용자 확인하자
     user = request.user
-    if user.is_authenticated:   # 로그인 되어있으면
+    if user.is_authenticated:    # 로그인 되어있으면
         profile = Profile.objects.get(user=user)
-        bookmark_list = Bookmark.objects.filter(profile=profile)    # 그 사용자의 북마크 가져오자
-    else:       # 로그인 안되어 있으면
-        bookmark_list = Bookmark.objects.none()     # 북마크 없는것 가져오자
+        bookmark_list = Bookmark.objects.filter(profile=profile)  # 그 사용자의 북마크 가져오자
+    else:   # 로그인 안되어 있으면
+        bookmark_list = Bookmark.objects.none()    # 북마크 없는것 가져오자
 
     return render(request, 'bookmark/bookmark_list.html', {'bookmark_list': bookmark_list})
+
 
 def detail_bookmark(request, pk):
     bookmark = Bookmark.objects.get(pk=pk)

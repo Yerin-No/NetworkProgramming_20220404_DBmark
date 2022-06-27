@@ -24,12 +24,13 @@ def my_login(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect(request.Get.get(REDIRECT_FIELD_NAME) or 'bookmark:list')
+            return redirect(request.GET.get(REDIRECT_FIELD_NAME) or 'bookmark:list')
         else:
             return render(request, 'accounts/login_fail.html')
     else:
         form = LoginForm()
         return render(request, 'accounts/login.html', {'form': form})
+
 
 
 @login_required
