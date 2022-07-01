@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 
 from accounts.models import Profile
+from bookmark.forms import BookmarkCreationForm
 from bookmark.models import Bookmark
 
 
@@ -77,3 +78,15 @@ def delete_bookmark(request, pk):
     else:   # bookmark_delete.html 요청
         bookmark = Bookmark.objects.get(pk=pk)
         return render(request, 'bookmark/bookmark_confirm_delete.html', {'bookmark': bookmark})
+
+def create_bookmark(request):
+    if request.method == 'POST':       # 사용자가 입력하고 버튼 눌렀을 때
+        form = BookmarkCreationForm(request.POST)   # from 가져오자
+        if form.is_valid(): # is_valid()
+            new_bookmark = form.save(commit=False)  # new_bookmark 생성하자(name, url)
+            new_bookmark.profile = Profile.objects.get(user=request.user)   # new_bookmark에 profile 추가하자
+            new_bookmark.save() # new_bookmark.save()
+            return redirect('bookmark:list')    # bookmark:list 이동하자
+    else:   # 빈폼
+        form = BookmarkCreationForm()
+        return render(request, 'bookmark/bookmark_create.html', {'form': form})
